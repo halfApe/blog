@@ -13,8 +13,8 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://github.com/Alvin33/Alvin33.github.io
-root: /
+url: https://gitee.com/alvin33/alvin33.git
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -79,7 +79,7 @@ theme: yilia-plus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:Alvin33/Alvin33.github.io.git
+  repository: https://gitee.com/alvin33/alvin33.git
   bransh: master
 
 jsonContent:
