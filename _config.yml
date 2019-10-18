@@ -126,20 +126,20 @@ menu:
 # subNav-子导航
 subNav:
   github: "https://github.com/Alvin33/JavaLibrary"
-  gitee: "#" # 码云
-  jianshu: "#" #简书
-  csdn: "#"
-  rss: "#"
-  zhihu: "#"
+  gitee: "https://gitee.com/alvin33" # 码云
+  csdn: "https://www.cnblogs.com/java333/"
   qq: "img/491783100.jpg"
   weixin: "img/wt0501171x_.png"
-  weibo: "#"
-  douban: "#"
-  segmentfault: "#"
-  bilibili: "#"
-  acfun: "#"
+  segmentfault: "https://segmentfault.com/u/alvin33"
   mail: "mailto:lover19168@163.com"
-  google: "#"
+#  jianshu: "#" #简书
+#  rss: "#"
+#  zhihu: "#"
+#  weibo: "#"
+#  douban: "#"
+#  bilibili: "#"
+#  acfun: "#"
+#  google: "#"
 #  linkedin: "#"
 #  facebook: "#"
 #  twitter: "#"

@@ -8,7 +8,7 @@ subtitle: Java藏书阁技术博客
 description: 进一寸有一寸的欢喜，沉一寸有一寸的收获。
 keywords: blog
 author: alvin
-language: en
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -35,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -79,27 +79,26 @@ theme: yilia-plus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://gitee.com/alvin33/alvin33
-#  repository: git@github.com:Alvin33/Alvin33.github.io.git
+  repository: https://gitee.com/alvin33/alvin33.git
   bransh: master
 
 jsonContent:
-  meta: true
-  pages: true
+  meta: false
+  pages: false
   posts:
     title: true
     date: true
     path: true
-    text: true
-    raw: true
-    content: true
-    slug: true
-    updated: true
-    comments: true
-    link: true
-    permalink: true
-    excerpt: true
-    categories: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
     tags: true
 # Extensions
 plugins:
@@ -127,20 +126,20 @@ menu:
 # subNav-子导航
 subNav:
   github: "https://github.com/Alvin33/JavaLibrary"
-  gitee: "#" # 码云
-  jianshu: "#" #简书
-  csdn: "#"
-  rss: "#"
-  zhihu: "#"
+  gitee: "https://gitee.com/alvin33" # 码云
+  csdn: "https://www.cnblogs.com/java333/"
   qq: "img/491783100.jpg"
   weixin: "img/wt0501171x_.png"
-  weibo: "#"
-  douban: "#"
-  segmentfault: "#"
-  bilibili: "#"
-  acfun: "#"
+  segmentfault: "https://segmentfault.com/u/alvin33"
   mail: "mailto:lover19168@163.com"
-  google: "#"
+#  jianshu: "#" #简书
+#  rss: "#"
+#  zhihu: "#"
+#  weibo: "#"
+#  douban: "#"
+#  bilibili: "#"
+#  acfun: "#"
+#  google: "#"
 #  linkedin: "#"
 #  facebook: "#"
 #  twitter: "#"
