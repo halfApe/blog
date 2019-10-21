@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Your friend，Alvin">
 <meta property="og:description" content="前言该篇内容主要浅谈分库分表的引入过程以及Mycat的基础知识，如果你觉得对你有所帮助，那就点击左侧 1.分库分表 为什么要分库分表？分库分表的意义何在？  困境再谈系统架构演进12应用数据库单机部署-&amp;gt;应用数据库分离部署-&amp;gt;应用拆分(微服务)								-&amp;gt;数据库拆分(分库分表)  ​">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-21T12:54:24.257Z">
+<meta property="og:updated_time" content="2019-10-21T13:05:27.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式之分库分表Mycat基础篇(一)">
 <meta name="twitter:description" content="前言该篇内容主要浅谈分库分表的引入过程以及Mycat的基础知识，如果你觉得对你有所帮助，那就点击左侧 1.分库分表 为什么要分库分表？分库分表的意义何在？  困境再谈系统架构演进12应用数据库单机部署-&amp;gt;应用数据库分离部署-&amp;gt;应用拆分(微服务)								-&amp;gt;数据库拆分(分库分表)  ​">
@@ -70,7 +70,7 @@
 		  <h1 class="header-author"><a href="/">alvin</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">Java藏书阁技术博客</p>
+		<p class="header-subtitle">Java书友会</p>
 		
 
 		<nav class="header-menu">
@@ -110,9 +110,9 @@
 		        
 					<a class="csdn" href="https://www.cnblogs.com/java333/" title="CSDN" target="_blank"><i class="icon-csdn"></i></a>
 		        
-					<a class="qq" href="/img/491783100.jpg" title="QQ" target="_blank"><i class="icon-qq"></i></a>
+					<a class="qq" href="/img/491783100.png" title="QQ" target="_blank"><i class="icon-qq"></i></a>
 		        
-					<a class="weixin" href="/img/wt0501171x_.png" title="微信" target="_blank"><i class="icon-weixin"></i></a>
+					<a class="weixin" href="/img/weixin.png" title="微信" target="_blank"><i class="icon-weixin"></i></a>
 		        
 					<a class="segmentfault" href="https://segmentfault.com/u/alvin33" title="SegmentFault" target="_blank"><i class="icon-segmentfault"></i></a>
 		        
@@ -161,7 +161,7 @@
 			  <h1 class="header-author js-header-author">alvin</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Java藏书阁技术博客<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Java书友会<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -184,9 +184,9 @@
 			        
 						<a class="csdn" target="_blank" href="https://www.cnblogs.com/java333/" title="CSDN"><i class="icon-csdn"></i></a>
 			        
-						<a class="qq" target="_blank" href="/img/491783100.jpg" title="QQ"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="/img/491783100.png" title="QQ"><i class="icon-qq"></i></a>
 			        
-						<a class="weixin" target="_blank" href="/img/wt0501171x_.png" title="微信"><i class="icon-weixin"></i></a>
+						<a class="weixin" target="_blank" href="/img/weixin.png" title="微信"><i class="icon-weixin"></i></a>
 			        
 						<a class="segmentfault" target="_blank" href="https://segmentfault.com/u/alvin33" title="SegmentFault"><i class="icon-segmentfault"></i></a>
 			        
@@ -241,7 +241,7 @@
         </span>
 
 <a href="/2019/10/21/分布式之分库分表Mycat基础篇(一)/" class="archive-article-date">
-        <time datetime="2019-10-21T11:24:21.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
+        <time datetime="2019-10-21T13:04:57.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
 </a>
 
   
@@ -424,9 +424,18 @@
 
 <nav id="article-nav">
   
+    <a href="/2019/10/21/分布式之分库分表Mycat原理篇（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          分布式之分库分表Mycat原理篇（二）
+        
+      </div>
+    </a>
   
-    <a href="/2019/10/21/分布式之分库分表Mycat原理篇（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">分布式之分库分表Mycat原理篇（二）</div>
+  
+    <a href="/2019/10/21/本机多git账户管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">本机多git账户管理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -489,33 +498,30 @@
 
 
 
-  <div id="giteement-ctn"></div>
+
   
-    <!-- <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/wd-discuss.css"> -->
-    <!-- <script src="https://giteement.oss-cn-beijing.aliyuncs.com/discuss_hexo.js"></script> -->
-    <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css">
-    <script src="https://giteement.oss-cn-beijing.aliyuncs.com/giteement.browser.js"></script>
+  <div id="gitment-ctn"></div>
+  
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
   <script>
-  <!-- id: "分布式之分库分表Mycat基础篇(一)" -->
-  var giteement = new Giteement({
-    id: '20191021192421',
-    owner: 'Alvin',
-    repo: '',
-    backcall_uri: '',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: '',
-      client_secret: ''
-    },
-  })
-  giteement.render('giteement-ctn')
+    <!-- id: "分布式之分库分表Mycat基础篇(一)" -->
+    var gitment = new Gitment({
+      id: "20191021210457",
+      owner: 'Alvin33',
+      repo: 'alvin-blog-comment',
+      oauth: {
+        client_id: '0f4a802b46d4abc58cba',
+        client_secret: '2f354f8f919f9e5ddad1a8383fca64c8eef2b6f5',
+      },
+    })
+    gitment.render('gitment-ctn')
   </script>
 
 
-
-
-
+  
 
 
 

@@ -128,8 +128,8 @@ subNav:
   github: "https://github.com/Alvin33/JavaLibrary"
   gitee: "https://gitee.com/alvin33" # 码云
   csdn: "https://www.cnblogs.com/java333/"
-  qq: "img/491783100.jpg"
-  weixin: "img/wt0501171x_.png"
+  qq: "img/491783100.png"
+  weixin: "img/weixin.png"
   segmentfault: "https://segmentfault.com/u/alvin33"
   mail: "mailto:lover19168@163.com"
 #  jianshu: "#" #简书
@@ -219,30 +219,30 @@ disqus: true
 
 # 3、Gitment----基于GitHub的评论系统(关闭请设置gitment_owner为false)
 # 关于如何集成:https://www.jianshu.com/p/ac7658cc912f
-gitment_owner: false      #你的 GitHub ID
+gitment_owner: Alvin33      #你的 GitHub ID
 # 是否使用官方js(false可以提升访问速度，本地修改过一部分的js，官方js可能会出现服务器不稳定，不太建议使用)
 gitment_remote: false
-gitment_repo: ''          #存储评论的 repo name(需要在Github创建)
+gitment_repo: 'alvin-blog-comment'          #存储评论的 repo name(需要在Github创建)
 gitment_oauth:
-  client_id: ''           #client ID
-  client_secret: ''       #client secret
+  client_id: '0f4a802b46d4abc58cba'           #client ID
+  client_secret: '2f354f8f919f9e5ddad1a8383fca64c8eef2b6f5'       #client secret
 
 # 4、Giteement----【国内用户建议使用这个，相对比较快】
 # 关于如何集成:https://www.jianshu.com/p/f5c4633524c7
 # 基于码云的评论系统(https://gitee.com/zhousiwei/giteement)
 giteement:
-  enable: true  # 是否启用码云评论系统
+  enable: false  # 是否启用码云评论系统
   # 是否使用官方js(false可以提升访问速度)
-  remote: true
-  redirect_uri: ''   # 应用回调地址(请和配置的第三方应用保持一致)
+  remote: false
+  redirect_uri: 'https://alvin33.gitee.io/alvin-blog-comment'   # 应用回调地址(请和配置的第三方应用保持一致)
   # 不能更改(网上开源项目`https://github.com/Rob--W/cors-anywhere`作者提供的专门用来跨域服务器的配置)
   oauth_uri: https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token
-  giteeID: 'Alvin'  # 你的码云账号英文名
+  giteeID: 'alvin33'  # 你的码云账号英文名
   # 存储评论的 repo name(需要在码云仓库创建公开仓库)
-  repo: ''
+  repo: 'alvin-blog-comment'
   gitment_oauth:
-    client_id: ''           #client ID
-    client_secret: ''       #client secret
+    client_id: 'dc5eeb16ed42e6c5a508587868736a8a9e496365b23d9f96537e23c65d570e50'           #client ID
+    client_secret: '9ecdf9dabf3154523f4915528b77f2f4c282aed06c71059f431725051f84bda6'       #client secret
 
 # 访问量统计功能(不蒜子)
 busuanzi:
