@@ -226,135 +226,145 @@
             
 
   
-    <article id="post-分布式之分库分表Mycat原理篇（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-运维篇Docker之初见本尊1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/10/21/分布式之分库分表Mycat原理篇（二）/" target="_blank">分布式之分库分表Mycat原理篇（二）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/10/21/分布式之分库分表Mycat原理篇（二）/" class="archive-article-date">
-        <time datetime="2019-10-21T13:04:57.985Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2>
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/21/分布式之分库分表Mycat原理篇（二）/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-分布式之分库分表Mycat基础篇(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2019/10/21/分布式之分库分表Mycat基础篇(一)/" target="_blank">分布式之分库分表Mycat基础篇(一)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2019/10/21/分布式之分库分表Mycat基础篇(一)/" class="archive-article-date">
-        <time datetime="2019-10-21T13:04:57.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该篇内容主要浅谈分库分表的引入过程以及Mycat的基础知识，如果你觉得对你有所帮助，那就点击左侧</p>
-<h2 id="1-分库分表"><a href="#1-分库分表" class="headerlink" title="1.分库分表"></a>1.分库分表</h2><blockquote>
-<p>为什么要分库分表？分库分表的意义何在？</p>
+    <h1 id="运维篇Docker之初见本尊1"><a href="#运维篇Docker之初见本尊1" class="headerlink" title="运维篇Docker之初见本尊1"></a>运维篇Docker之初见本尊1</h1><h2 id="1-Docker是什么？"><a href="#1-Docker是什么？" class="headerlink" title="1.Docker是什么？"></a>1.Docker是什么？</h2><p>​    <a href="www.docker.com">Docker官网</a></p>
+<blockquote>
+<p>Modernize your applications, accelerate innovation Securely build, share and run modern applications anywhere</p>
+<p> <em>实现应用程序现代化，加速创新 安全构建、共享和运行任何地方的现代应用程序</em> </p>
 </blockquote>
-<h3 id="困境"><a href="#困境" class="headerlink" title="困境"></a>困境</h3><h4 id="再谈系统架构演进"><a href="#再谈系统架构演进" class="headerlink" title="再谈系统架构演进"></a>再谈系统架构演进</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">应用数据库单机部署-&gt;应用数据库分离部署-&gt;应用拆分(微服务)</span><br><span class="line">								-&gt;数据库拆分(分库分表)</span><br></pre></td></tr></table></figure>
-
-<p>​                                                                                           -&gt;数据库拆分（分库分表）</p>
-<p>一生二，二生三，三生万物。任何良性可持续的发展必然是一个从单一到繁荣的过程。公司的业务也是如此，随着业务量的增大，单一数据库已经无法支撑我们的业务。那么他具体出现了哪些问题呢？</p>
-<h4 id="单机数据库性能瓶颈的出现"><a href="#单机数据库性能瓶颈的出现" class="headerlink" title="单机数据库性能瓶颈的出现"></a>单机数据库性能瓶颈的出现</h4><ul>
-<li>连接</li>
-</ul>
+<p>​    <a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docs</a></p>
+<blockquote>
+<p>Docker is a platform for developers and sysadmins to <strong>build, share, and run</strong> applications with containers. The use of containers to deploy applications is called <em>containerization</em>. Containers are not new, but their use for easily deploying applications is.</p>
+<p><em>Docker 是开发人员和系统管理员使用容器[构建、共享和运行]应用程序的平台。<strong>使用容器来部署应用程序称为 [容器化]。</strong>容器不是新的，但它们用于轻松部署应用程序。</em></p>
+</blockquote>
+<h2 id="2-为什么是Docker？"><a href="#2-为什么是Docker？" class="headerlink" title="2.为什么是Docker？"></a>2.为什么是Docker？</h2><p>​    我们先来看一段运维的发展史，开发好一个项目，进行线上部署</p>
 <ul>
-<li><p>速度</p>
-<p>想象一下你在国庆期间去西湖游玩，在人山人海中寻找你走丢的玩伴。操作一个存有庞大数据的单一数据库，速度之慢可想而知。</p>
-</li>
-<li><p>存储</p>
-<p>单机存储数据量大之后，我们必然会</p>
+<li>单机部署</li>
+</ul>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2.png" alt></p>
+<p>单机部署在项目初期固然方便快捷，但是当我们项目访问量变大，业务复杂度增加的时候，这个时候就会暴露出很多缺点：</p>
+<p>​    <code>成本高</code> <code>部署慢</code> <code>资源浪费``硬件限制``不利于扩展</code></p>
+<ul>
+<li>虚拟化时代</li>
+</ul>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/%E8%99%9A%E6%8B%9F%E5%8C%96%E6%97%B6%E4%BB%A3.png" alt></p>
+<p>与之前相比，利用虚拟机可以更好地利用资源，相对容易扩展些，但是它同时带来了很多缺点：</p>
+<p>​    <code>初始化占用资源较大</code> <code>移植性较差</code> <code>资源利用率低</code></p>
+<ul>
+<li>容器化当下</li>
+</ul>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/%E5%AE%B9%E5%99%A8%E5%8C%96%E5%BD%93%E4%B8%8B.png" alt></p>
+<blockquote>
+<p>docker的优势，引用官方的话：</p>
+<ul>
+<li><strong>Standard:</strong> Docker created the industry standard for containers, so they could be portable anywhere</li>
+<li><strong>Lightweight:</strong> Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs</li>
+<li><strong>Secure:</strong> Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry</li>
+<li><strong>标准：</strong> Docker创建了容器的行业标准，因此它们可以在任何地方移植</li>
+<li><strong>轻量级：</strong>容器共享计算机的OS系统内核，因此不需要每个应用程序都具有OS，从而提高了服务器效率并降低了服务器和许可成本</li>
+<li><strong>安全：</strong>容器中的应用程序更安全，Docker提供了业界最强大的默认隔离功能</li>
+</ul>
+</blockquote>
+<h2 id="3-Docker环境搭建"><a href="#3-Docker环境搭建" class="headerlink" title="3.Docker环境搭建"></a>3.Docker环境搭建</h2><p>​    在windows上安装centos7，采用Vagrant+Virtual Box：</p>
+<ul>
+<li>Vagrant安装：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.访问vagrant官网</span></span><br><span class="line">https://www.vagrantup.com</span><br><span class="line"><span class="meta">#</span><span class="bash">2.点击Downloads，下载windows及对应版本</span></span><br><span class="line"><span class="meta">#</span><span class="bash">3.next安装</span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.命令行输入vagrant 测试是否安装成功</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Virtual Box安装：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.访问VirtualBox官网 </span></span><br><span class="line">https://www.virtualbox.org/ </span><br><span class="line"><span class="meta">#</span><span class="bash">2.点击Downloads，下载windows及对应版本</span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.next安装 </span></span><br><span class="line"><span class="meta">#</span><span class="bash">注意事项：(我在安装的时候没有遇到哦)</span></span><br><span class="line">[win10中若出现]安装virtualbox快完成时立即回滚，并提示安装出现严重错误 </span><br><span class="line">	1)打开服务 </span><br><span class="line">	2)找到Device Install Service和Device Setup Manager，然后启动</span><br><span class="line">	3)再次尝试安装</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装centos</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.创建docker-centos7文件夹(注意目录路径不要有中文字符)，进入文件夹 </span></span><br><span class="line"><span class="meta">#</span><span class="bash">2. 在此目录下打开cmd(或者powershell)，运行vagrant init centos/7 此时会在当前目录下生成Vagrantfile</span></span><br><span class="line"><span class="meta">#</span><span class="bash">3 准备centos7的box （也可以运行vagrant up 此时会找centos7的镜像，本地有就用本地的，本地没有就会拉取远端的，但是直接拉去远端太慢，建议先下载后从本地拉取）</span></span><br><span class="line">	1)下载地址：https://pan.baidu.com/s/1fKylFndofc77zFWCUjBo8w 下载完成后放入上述新建的文件夹中</span><br><span class="line">	2)vagrant box add centos/7 XX\virtualbox.box (你存放的地址)	</span><br><span class="line">	3)vagrant box list 查看本地的box(这时候可以看到centos/7)</span><br><span class="line">	4)vagrant up (根据本地的centos7 box创建虚拟机。打开virtual box，可以发现centos7创建成功)</span><br><span class="line"><span class="meta">#</span><span class="bash">4. vagrant基本操作</span></span><br><span class="line">	1)vagrant ssh 进入刚才创建的centos7中</span><br><span class="line">    2)vagrant status 查看centos7的状态 </span><br><span class="line">    3)vagrant halt 停止centos7 </span><br><span class="line">    4)vagrant destroy 删除centos7 </span><br><span class="line">    5)vagrant status 查看当前vagrant创建的虚拟机 </span><br><span class="line"><span class="meta">#</span><span class="bash">5.修改虚拟机属性配置文件Vagrantfile之后执行vagrant reload</span></span><br><span class="line">	config.vm.box = "centos/7"</span><br><span class="line">	config.vm.network "public_network"</span><br><span class="line">	config.vm.provider "virtualbox" do |vb|</span><br><span class="line">		   vb.memory="3000"</span><br><span class="line">		   vb.name  ="alvin-centos7"</span><br><span class="line">		   vb.cpus   = 2</span><br><span class="line">	end</span><br></pre></td></tr></table></figure>
+
+<p>基于上述vagrant+virtual box+centos的安装步骤， 我们已经可以安装docker了，但是windos命令窗口对于我们来说不是很友好，所以我们选择xshell6的安装</p>
+<ul>
+<li>xshell 登录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.查看centos7的基本信息，主要获取Hostname Port IndentityFile信息</span></span><br><span class="line">vagrant ssh-config </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">2.进入虚拟机查看其ip地址,复制其ip地址192.168.110.164</span></span><br><span class="line">vagrant ssh </span><br><span class="line">ip a</span><br><span class="line"><span class="meta">#</span><span class="bash">3.使用root账户登录</span></span><br><span class="line">	sudo -i	</span><br><span class="line">	vi /etc/ssh/sshd_config	</span><br><span class="line">	修改PasswordAuthentication yes</span><br><span class="line">	修改root密码 passwd </span><br><span class="line">	systemctl restart sshd</span><br><span class="line"><span class="meta">#</span><span class="bash">4.连接xshell</span></span><br><span class="line">	使用root账户+刚才修改的密码进行登录。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>实现box分发</p>
+<p>在安装docker之前，我们有必要再来了解下，virtual.box的分发，以保证我们可以快速在新创建一个虚拟机。</p>
 </li>
 </ul>
-<h2 id="2-数据分片"><a href="#2-数据分片" class="headerlink" title="2.数据分片"></a>2.数据分片</h2><blockquote>
-<p>数据分片有哪些方式，这些方式带来了哪些问题？应对的解决方案是什么？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.回到我们上述的docker-centos目录</span></span><br><span class="line"><span class="meta">#</span><span class="bash">2.退出虚拟机 vagrant halt</span></span><br><span class="line"><span class="meta">#</span><span class="bash">3.执行vagrant package --output docker.centos7.box</span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.将上述执行结果docker-centos7.box添加到其他的vagrant环境中（注意:此时要新建一个目录，用来存放docker-centos7.box,然后进入到该目录下）</span></span><br><span class="line">	vagrant box add docker-centos7 docker-centos7.box</span><br><span class="line"><span class="meta">#</span><span class="bash">5.执行vagrant init docker-centos7 得到vagrantfile</span></span><br><span class="line"><span class="meta">#</span><span class="bash">6.执行vagrant up就会发现启动了一个新的虚拟机。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装Docker</li>
+</ul>
+<blockquote>
+<p>官网说明： <a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a> </p>
 </blockquote>
-<h2 id="3-Mycat特性"><a href="#3-Mycat特性" class="headerlink" title="3.Mycat特性"></a>3.Mycat特性</h2><blockquote>
-<p>Mycat特性与详细配置含义的阐释</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.win+r打开命令窗口,执行cmd</span></span><br><span class="line"><span class="meta">#</span><span class="bash">2.切换到docker-centos目录，执行vagrant up命令打开虚拟机（因为此时重启电脑了，虚拟机需要重新打开）</span></span><br><span class="line"><span class="meta">#</span><span class="bash">3.使用xhsell登录虚拟机。</span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.执行以下命令：</span></span><br><span class="line">	sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line">	sudo yum install -y yum-utils \</span><br><span class="line">  		 device-mapper-persistent-data \</span><br><span class="line">  		 lvm2</span><br><span class="line"><span class="meta">#</span><span class="bash">5.为了拉取镜像快速，可以登录自己的阿里云服务器-&gt;选择控制台-&gt;容器镜像服务-&gt;镜像中心-&gt;镜像加速器</span></span><br><span class="line">	sudo mkdir -p /etc/docker</span><br><span class="line">	sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span><br><span class="line">	&#123;</span><br><span class="line">  	"registry-mirrors": ["https://gys4eox1.mirror.aliyuncs.com"]</span><br><span class="line">	&#125;</span><br><span class="line">	EOF</span><br><span class="line"><span class="meta">	#</span><span class="bash">(这个是免费的哦~)</span></span><br><span class="line">	sudo systemctl daemon-reload</span><br><span class="line">	sudo systemctl restart docker</span><br><span class="line"><span class="meta">#</span><span class="bash">6.正式安装docker</span></span><br><span class="line">	sudo yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"><span class="meta">#</span><span class="bash">7.启动Docker</span></span><br><span class="line">	sudo systemctl start docker</span><br><span class="line">	sudo systemctl enable docker(设置开机启动)</span><br><span class="line">	docker version --查看docker版本信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Docker应用场景"><a href="#4-Docker应用场景" class="headerlink" title="4.Docker应用场景"></a>4.Docker应用场景</h2><blockquote>
+<p><a href="http://www.docker.com" target="_blank" rel="noopener">www.docker.com</a> —&gt; Solutions</p>
 </blockquote>
-<h2 id="4-Mycat监控与日志"><a href="#4-Mycat监控与日志" class="headerlink" title="4.Mycat监控与日志"></a>4.Mycat监控与日志</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.有助于微服务的落地和部署</span></span><br><span class="line"><span class="meta">#</span><span class="bash">2.充分利用物理机资源，同时能够整合服务器资源</span></span><br><span class="line"><span class="meta">#</span><span class="bash">3。提高开发效率，测试效率，部署效率，有利于DevOps的落地，CI/CD(持续集成)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.云原生落地，应用更好地迁移</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Docker核心"><a href="#5-Docker核心" class="headerlink" title="5.Docker核心"></a>5.Docker核心</h2><h3 id="Docker-Engine"><a href="#Docker-Engine" class="headerlink" title="Docker Engine"></a>Docker Engine</h3><p><em>Docker Engine</em> is a client-server application with these major components:</p>
+<ul>
+<li>A server which is a type of long-running program called a daemon process (the <code>dockerd</code> command).</li>
+<li>A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.</li>
+<li>A command line interface (CLI) client (the <code>docker</code> command).</li>
+</ul>
+<blockquote>
+<p><em>Docker Engine</em>是具有以下主要组件的客户端-服务器应用程序：</p>
+<ul>
+<li>服务器是一种长期运行的程序，称为守护程序进程（ <code>dockerd</code>命令）。</li>
+<li>REST API，它指定程序可以用来与守护程序进行通信并指示其操作的接口。</li>
+<li>命令行界面（CLI）客户端（<code>docker</code>命令）。</li>
+</ul>
+</blockquote>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/dockerEngine.png" alt></p>
+<h3 id="Docker-Architecture"><a href="#Docker-Architecture" class="headerlink" title="Docker Architecture"></a>Docker Architecture</h3><p> Docker uses a client-server architecture. The Docker <em>client</em> talks to the Docker <em>daemon</em>, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon <em>can</em> run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface. </p>
+<blockquote>
+<p> Docker使用客户端-服务器架构。Docker <em>客户端<em>与Docker *守护进程</em>进行对话，该<em>守护进程</em>完成了构建，运行和分发Docker容器的繁重工作。Docker客户端和守护程序*可以</em> 在同一系统上运行，也可以将Docker客户端连接到远程Docker守护程序。Docker客户端和守护程序在UNIX套接字或网络接口上使用REST API进行通信。 </p>
+</blockquote>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/docker%E6%9E%B6%E6%9E%84.png" alt></p>
+<h3 id="Docker-Images-and-Containers"><a href="#Docker-Images-and-Containers" class="headerlink" title="Docker Images  and Containers"></a>Docker Images  and Containers</h3><p> A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings. A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. Container images become containers at runtime and in the case of Docker containers- images become containers when they run on Docker Engine.</p>
+<p> Fundamentally, a container is nothing but a running process, with some added encapsulation features applied to it in order to keep it isolated from the host and from other containers. One of the most important aspects of container isolation is that each container interacts with its own, private filesystem; this filesystem is provided by a Docker <strong>image</strong>. An image includes everything needed to run an application – the code or binary, runtimes, dependencies, and any other filesystem objects required. </p>
+<blockquote>
+<p> Docker容器映像是轻巧的，独立的，可执行的软件软件包，其中包含运行应用程序所需的一切：代码，运行时，系统工具，系统库和设置。 容器是打包代码及其所有依赖项的软件的标准单元，因此应用程序可以从一个计算环境快速可靠地运行到另一个计算环境  容器映像在运行时成为容器，对于Docker容器，映像在容器<a href="https://www.docker.com/products/docker-engine" target="_blank" rel="noopener">Docker Engine</a>上运行时成为容器。 </p>
+<p> 从根本上说，一个容器不过是一个正在运行的进程，并对其应用了一些附加的封装功能，以使其与主机和其他容器隔离。容器隔离的最重要方面之一是每个容器都与自己的私有文件系统进行交互。该文件系统由Docker <strong>映像提供</strong>。映像包括运行应用程序所需的所有内容-代码或二进制文件，运行时，依赖项以及所需的任何其他文件系统对象。 </p>
+</blockquote>
+<h3 id="Containers-and-virtual-machines"><a href="#Containers-and-virtual-machines" class="headerlink" title="Containers and virtual machines"></a>Containers and virtual machines</h3><p>A container runs <em>natively</em> on Linux and shares the kernel of the host machine with other containers. It runs a discrete process, taking no more memory than any other executable, making it lightweight.</p>
+<p>By contrast, a <strong>virtual machine</strong> (VM) runs a full-blown “guest” operating system with <em>virtual</em> access to host resources through a hypervisor. In general, VMs incur a lot of overhead beyond what is being consumed by your application logic.</p>
+<blockquote>
+<p>容器在Linux上<em>本地运行</em>，并与其他容器共享主机的内核。它运行一个离散进程，不占用任何其他可执行文件更多的内存，从而使其轻巧。</p>
+<p>相比之下，<strong>虚拟机</strong>（VM）运行成熟的“来宾”操作系统，并通过虚拟机管理程序对主机资源进行<em>虚拟</em>访问。通常，VM会产生大量开销，超出了应用程序逻辑所消耗的开销。</p>
+</blockquote>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/%E5%AE%B9%E5%99%A8%E4%B8%8E%E8%99%9A%E6%9C%BA.png" alt></p>
+<h2 id="6-Docker使用"><a href="#6-Docker使用" class="headerlink" title="6.Docker使用"></a>6.Docker使用</h2><p>上面说了那么多，那们我们有了Docker，怎么使用了？不妨用docker来安装一些基本的application试试。</p>
+<ul>
+<li>Docker初体验</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">创建tomcat容器</span></span><br><span class="line">	docker pull tomcat</span><br><span class="line"><span class="meta">	#</span><span class="bash"><span class="comment">#启动tomcat</span></span></span><br><span class="line">	docker run -d --name my-tomcat -p 9090:8080 tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash">创建mysql容器</span></span><br><span class="line">	docker run -d --name my-mysql -p 3301:3306 -e MYSQL_ROOT_PASSWORD=alvin123 --privileged mysql</span><br><span class="line"><span class="meta">#</span><span class="bash">进入到容器内部</span></span><br><span class="line">	docker exet -it containerid /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>那我们这些容器镜像到底是从哪里拉取的呢？</p>
+<blockquote>
+<p><a href="https://hub.docker.com/" target="_blank" rel="noopener"> https://hub.docker.com/ </a></p>
+</blockquote>
+<ul>
+<li>Docker常用命令</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.查看本地Docker镜像</span></span><br><span class="line">	docker images</span><br><span class="line"><span class="meta">#</span><span class="bash">2.拉取镜像</span></span><br><span class="line">	docker pull</span><br><span class="line"><span class="meta">#</span><span class="bash">3.创建容器</span></span><br><span class="line">	docker run</span><br><span class="line"><span class="meta">#</span><span class="bash">4.查看当前正在运行的容器</span></span><br><span class="line">	docker ps</span><br><span class="line"><span class="meta">#</span><span class="bash">4.查看所有运行过的容器</span></span><br><span class="line">	docker ps -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-Docker设计猜想"><a href="#7-Docker设计猜想" class="headerlink" title="7.Docker设计猜想"></a>7.Docker设计猜想</h2><blockquote>
+<p>分层思想</p>
+</blockquote>
+<p><img src="/alvin33/alvin33.git/2019/11/03/运维篇Docker之初见本尊1/docker%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1.png" alt></p>
+<p>以上就是docker本尊的基础信息啦，下次我们将对docker进行灵魂拷问，欢迎来看~</p>
+
     
 
     
@@ -369,7 +379,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2019/10/21/分布式之分库分表Mycat基础篇(一)/">展开全文 >></a>
+      <a class="article-more-a" href="/2019/11/03/运维篇Docker之初见本尊1/">展开全文 >></a>
     </p>
     
 
