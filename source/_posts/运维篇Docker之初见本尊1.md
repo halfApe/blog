@@ -22,7 +22,7 @@ title: 运维篇Docker之初见本尊1
 
 - 单机部署
 
-![](运维篇Docker之初见本尊1/单机部署.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/docker%E5%88%9D%E8%A7%81%E6%9C%AC%E5%B0%8A-%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2.png)
 
 单机部署在项目初期固然方便快捷，但是当我们项目访问量变大，业务复杂度增加的时候，这个时候就会暴露出很多缺点：
 
@@ -30,7 +30,7 @@ title: 运维篇Docker之初见本尊1
 
 - 虚拟化时代
 
-![](运维篇Docker之初见本尊1/虚拟化时代.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/docker%E5%88%9D%E8%A7%81%E6%9C%AC%E5%B0%8A-%E8%99%9A%E6%8B%9F%E5%8C%96%E6%97%B6%E4%BB%A3.png)
 
 与之前相比，利用虚拟机可以更好地利用资源，相对容易扩展些，但是它同时带来了很多缺点：
 
@@ -38,7 +38,7 @@ title: 运维篇Docker之初见本尊1
 
 - 容器化当下
 
-![](运维篇Docker之初见本尊1/容器化当下.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/docker%E5%88%9D%E8%A7%81%E6%9C%AC%E5%B0%8A-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%BD%93%E4%B8%8B.png)
 
 > docker的优势，引用官方的话：
 >
@@ -207,7 +207,7 @@ ip a
 > - REST API，它指定程序可以用来与守护程序进行通信并指示其操作的接口。
 > - 命令行界面（CLI）客户端（`docker`命令）。
 
-![](运维篇Docker之初见本尊1/dockerEngine.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/docker%E5%88%9D%E8%A7%81%E6%9C%AC%E5%B0%8A-dockerEngine.png)
 
 ### Docker Architecture
 
@@ -215,7 +215,7 @@ ip a
 
 >  Docker使用客户端-服务器架构。Docker *客户端*与Docker *守护进程*进行对话，该*守护进程*完成了构建，运行和分发Docker容器的繁重工作。Docker客户端和守护程序*可以* 在同一系统上运行，也可以将Docker客户端连接到远程Docker守护程序。Docker客户端和守护程序在UNIX套接字或网络接口上使用REST API进行通信。 
 
-![](运维篇Docker之初见本尊1/docker架构.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/docker%E5%88%9D%E8%A7%81%E6%9C%AC%E5%B0%8A-docker%E6%9E%B6%E6%9E%84.png)
 
 ### Docker Images  and Containers
 
@@ -237,7 +237,7 @@ By contrast, a **virtual machine** (VM) runs a full-blown “guest” operating 
 >
 > 相比之下，**虚拟机**（VM）运行成熟的“来宾”操作系统，并通过虚拟机管理程序对主机资源进行*虚拟*访问。通常，VM会产生大量开销，超出了应用程序逻辑所消耗的开销。
 
-![](运维篇Docker之初见本尊1/容器与虚机.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/docker%E5%88%9D%E8%A7%81%E6%9C%AC%E5%B0%8A-%E5%AE%B9%E5%99%A8%E4%B8%8E%E8%99%9A%E6%9C%BA.png)
 
 
 

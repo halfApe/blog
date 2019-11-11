@@ -5,7 +5,7 @@ title: 本机多git账户管理
 
 ​	Idea更新代码执行pull操作时一直提示输入密码！
 
-![1571622530865](https://raw.githubusercontent.com/Alvin33/images/master/%E6%9C%AC%E6%9C%BA%E5%A4%9Agit%E8%B4%A6%E6%88%B7%E7%AE%A1%E7%90%86/git_password_tip.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/git-git_password_tip.png)
 
 ### 问题分析：
 
@@ -57,7 +57,7 @@ IdentityFile ~/.ssh/id_rsa_gitlab
 
 生怕你不知道github或者是gitlab网站中ssh公钥在哪里配置，贴图镇楼。
 
-![1571627274972](https://raw.githubusercontent.com/Alvin33/images/master/%E6%9C%AC%E6%9C%BA%E5%A4%9Agit%E8%B4%A6%E6%88%B7%E7%AE%A1%E7%90%86/ssh_github.png)
+![](https://raw.githubusercontent.com/Alvin33/images/master/git-ssh_github.png)
 
 gitlab网站ssh配置在哪里？如果你找不到的话，那就点击左侧联系方式，加我好友，我告诉你~
 
