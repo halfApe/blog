@@ -226,6 +226,133 @@
             
 
   
+    <article id="post-运维篇Docker之灵魂拷问2-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/11/12/运维篇Docker之灵魂拷问2-2/" target="_blank">运维篇Docker之灵魂拷问2-1</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/11/12/运维篇Docker之灵魂拷问2-2/" class="archive-article-date">
+        <time datetime="2019-11-12T02:08:46.827Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>上节中，我们已经对Docker核心组件image进行了剖析，这节我们将对image层之上的container进行拷问。从下图中，我们可以看出container是基于Image层产生的。而image与container的关系 ，我们可以类比类和对象的关系进行理解。在docker的世界中，image是只读的，而container是可读写的。</p>
+<p><img src="https://raw.githubusercontent.com/Alvin33/images/master/docker-container.png" alt></p>
+<p>docker初见本尊篇我们已经介绍了如何创建一个容器，例如创建tomcat命令如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name my-tomcat -p 9090:8080 tomcat</span><br></pre></td></tr></table></figure>
+
+<h2 id="从container反推image"><a href="#从container反推image" class="headerlink" title="从container反推image"></a>从container反推image</h2><blockquote>
+<p>灵魂拷问1:既然我们知道container是基于image创建的，那么我们是否可以通过container反推得到image呢？</p>
+</blockquote>
+<p>下面我们看看个例子实践一波</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.拉取centos镜像</span></span><br><span class="line">docker pull centos </span><br><span class="line"><span class="meta">#</span><span class="bash">2.根据centos镜像创建出centos container</span></span><br><span class="line">docker run -d -it --name my-centos centos</span><br><span class="line"><span class="meta">#</span><span class="bash">3.进入my-centos容器中</span></span><br><span class="line">docker exec -it my-centos bash </span><br><span class="line"><span class="meta">#</span><span class="bash">4.输入vim命令，显示</span></span><br><span class="line">bash: vim: command not found</span><br><span class="line"><span class="meta">#</span><span class="bash">5.我们要做的是 对该container进行修改，也就是安装一下vim命令，然后将其生成一个新的centos <span class="comment">#6.在centos的container中安装vim </span></span></span><br><span class="line">yum install -y vim</span><br><span class="line"><span class="meta">#</span><span class="bash">7.退出容器（<span class="built_in">exit</span>或者Ctrl+d），将其生成一个新的centos，名称为<span class="string">"vim-centos-image"</span></span></span><br><span class="line">docker commit my-centos vim-centos-image</span><br><span class="line"><span class="meta">#</span><span class="bash">8.查看镜像列表，并且基于<span class="string">"vim-centos-image"</span>创建新的容器</span></span><br><span class="line">docker run -d -it --name my-vim-centos vim-centos-image</span><br><span class="line"><span class="meta">#</span><span class="bash">9.进入到my-vim-centos容器中</span></span><br><span class="line">docker exec -it my-vim-centos bash</span><br><span class="line"><span class="meta">#</span><span class="bash">10.检查vim命令是否存在</span></span><br><span class="line">vim</span><br></pre></td></tr></table></figure>
+
+<p>经过以上操作之后，我们发现，我们通过container反向创建的image，再将其生成新的container就继承了原来容器的特性。不过这种方式，并不推荐使用。因为我们常规的操作是利用Docker file生成image，这样做的话，我们无法得知image的创建过程 。更加推荐的方式是上节内容中的自定义image</p>
+<h2 id="container常用命令"><a href="#container常用命令" class="headerlink" title="container常用命令"></a>container常用命令</h2><p>上面我们用了几个操作容器的命令，这里做一个总结：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.根据镜像创建容器</span></span><br><span class="line">docker run -d --name -p 9090:8080 my-tomcat tomcat</span><br><span class="line"><span class="meta">#</span><span class="bash">2.查看运行中的container</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="meta">#</span><span class="bash">3.查看所有的container[包含退出的]</span></span><br><span class="line">docker ps -a </span><br><span class="line"><span class="meta">#</span><span class="bash">4.删除container</span></span><br><span class="line">docker rm containerid </span><br><span class="line"><span class="meta">#</span><span class="bash">5.删除所有container</span></span><br><span class="line">docker rm -f $(docker ps -a)</span><br><span class="line"><span class="meta">#</span><span class="bash">6.进入到一个container中</span></span><br><span class="line">docker exec -it container bash</span><br><span class="line"><span class="meta">#</span><span class="bash">7.根据container生成image</span></span><br><span class="line">docker commit my-centos vim-centos-image</span><br><span class="line"><span class="meta">#</span><span class="bash">8.查看某个container的日志</span></span><br><span class="line">docker logs container</span><br><span class="line"><span class="meta">#</span><span class="bash">9.查看容器资源使用情况</span></span><br><span class="line">docker stats</span><br><span class="line"><span class="meta">#</span><span class="bash">10.查看容器详情信息</span></span><br><span class="line">docker inspect container</span><br><span class="line"><span class="meta">#</span><span class="bash">11.停止/启动容器</span></span><br><span class="line">docker stop/start container</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充：删除image和container命令"><a href="#补充：删除image和container命令" class="headerlink" title="补充：删除image和container命令"></a>补充：删除image和container命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.杀死所有正在运行的容器</span></span><br><span class="line">docker kill $(docker ps -a -q)</span><br><span class="line"><span class="meta">#</span><span class="bash">2.删除所有已经停止的容器</span></span><br><span class="line">docker rm $(docker ps -a -q)</span><br><span class="line"><span class="meta">#</span><span class="bash">3.删除所有未打 dangling 标签的镜</span></span><br><span class="line">docker rmi $(docker images -q -f dangling=true)</span><br><span class="line"><span class="meta">#</span><span class="bash">4.删除所有镜像</span></span><br><span class="line">docker rmi $(docker images -q)</span><br><span class="line"><span class="meta">#</span><span class="bash">5.强制删除 无法删除的镜像</span></span><br><span class="line">docker rmi -f &lt;IMAGE_ID&gt;</span><br><span class="line">docker rmi -f $(docker images -q)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">~/.bash_aliases</span><br><span class="line"><span class="meta">#</span><span class="bash">1.杀死所有正在运行的容器.</span></span><br><span class="line">alias dockerkill='docker kill $(docker ps -a -q)'</span><br><span class="line"><span class="meta">	#</span><span class="bash">2.删除所有已经停止的容器.</span></span><br><span class="line">alias dockercleanc='docker rm $(docker ps -a -q)'</span><br><span class="line"><span class="meta">#</span><span class="bash">3.删除所有未打标签的镜像.</span></span><br><span class="line">alias dockercleani='docker rmi $(docker images -q -f dangling=true)'</span><br><span class="line"><span class="meta">	#</span><span class="bash">4.删除所有已经停止的容器和未打标签的镜像.</span></span><br><span class="line">alias dockerclean='dockercleanc || true &amp;&amp; dockercleani'</span><br></pre></td></tr></table></figure>
+
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="Container的资源监控"><a href="#Container的资源监控" class="headerlink" title="Container的资源监控"></a>Container的资源监控</h2><p>顾名思义，作为容器，他必然是有自己的“大小”，只有合理的利用好容器的资源，才能让他更好地发挥作用。</p>
+<p>上面，我们了解了Container的基本操作命令，可以执行docker stats来具体看一下docker容器的状态信息</p>
+<p><img src="https://raw.githubusercontent.com/Alvin33/images/master/Container-resource.png" alt></p>
+<p>我们可以看到，默认内存分配使用了宿主机的最大内存，这样的话会让我们的资源不可控。</p>
+<p>对于资源的限制，我们主要可以通过两方面来进行处理：</p>
+<ul>
+<li><p>内存限制</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">--memory memory <span class="built_in">limit</span></span></span><br><span class="line">docker run -d --memory 100M --name tomcat1 tomcat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cpu限制</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">--cpu-shares cpu权重</span></span><br><span class="line">docker run -d --memory 100M --cpu-shares 10 --name tomcat02 tomcat</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Alvin33/images/master/container-sourceLimit.png" alt></p>
+<p>从上图我们可以看出，已经设置成功啦。具体的大小可以根据实际情况灵活调整。</p>
+<p>命令行我们自己玩玩看看还行，但是在生产环境，海量容器的时候，就捉襟见肘了。这时候，得请出我们强大的容器监控工具</p>
+<h3 id="Weavescope"><a href="#Weavescope" class="headerlink" title="Weavescope"></a>Weavescope</h3><blockquote>
+<p>github地址：<a href="https://github.com/weaveworks/scope" target="_blank" rel="noopener">https://github.com/weaveworks/scope</a></p>
+</blockquote>
+<p>这个工具很强大，搭建也很简单，不过可能会存在一点小障碍，但也容易解决。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.配置weavescope环境</span></span><br><span class="line">sudo curl -L git.io/scope -o /usr/local/bin/scope</span><br><span class="line">sudo chmod a+x /usr/local/bin/scope</span><br><span class="line">scope launch 192.168.110.164</span><br><span class="line"><span class="meta">#</span><span class="bash">2.页面访问http://192.168.110.164:4040/，此时可能会出现页面无法访问的问题.我们要检查下4040端口是否启用。</span></span><br><span class="line"><span class="meta">	#</span><span class="bash">2.1 查看端口状态</span></span><br><span class="line">	firewall-cmd --query-port=4040/tcp</span><br><span class="line"><span class="meta">	#</span><span class="bash">2.2 添加端口</span></span><br><span class="line">	firewall-cmd --add-port=4040/tcp --permanent</span><br><span class="line"><span class="meta">	#</span><span class="bash">2.3 端口重载</span></span><br><span class="line">	firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>针对weave的详细介绍：</p>
+<p>​    可以参考官网： <a href="https://www.weave.works/docs/" target="_blank" rel="noopener">https://www.weave.works/docs/</a> </p>
+<p>​    也可以看看这篇文章： <a href="https://www.jianshu.com/p/1155b97bfdd8" target="_blank" rel="noopener">https://www.jianshu.com/p/1155b97bfdd8</a> </p>
+<h2 id="Container的技术支撑"><a href="#Container的技术支撑" class="headerlink" title="Container的技术支撑"></a>Container的技术支撑</h2><p>上面我们说了一些container比较重要的点，那么总结下来说</p>
+<blockquote>
+<p>Container是一种轻量级的虚拟化技术，不用模拟硬件创建虚拟机。 Docker是基于Linux Kernel的Namespace、CGroups、UnionFileSystem等技术封装成的一种自 定义容器格式，从而提供一套虚拟运行环境。 </p>
+<p>Namespace：用来做隔离的，比如pid[进程]、net[网络]、mnt[挂载点]等 </p>
+<p>CGroups: Controller Groups用来做资源限制，比如内存和CPU等 </p>
+<p>Union file systems：用来做image和container分层 </p>
+</blockquote>
+<p>想要进一步探究，就看我下一篇文章运维篇Docker之网络剖析吧，敬请期待~</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/11/12/运维篇Docker之灵魂拷问2-2/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-运维篇Docker之灵魂拷问2-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -234,7 +361,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2019/11/11/运维篇Docker之灵魂拷问2-1/" target="_blank">运维篇Docker之灵魂拷问2-1</a>
+	  <a class="article-title" href="/2019/11/11/运维篇Docker之灵魂拷问2-1/" target="_blank">运维篇Docker之灵魂拷问2-2</a>
   
     </h1>
   

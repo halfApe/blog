@@ -1,5 +1,5 @@
 ---
-title: 运维篇Docker之灵魂拷问2-1
+title: 运维篇Docker之灵魂拷问2-2
 ---
 
 上节中，我们已经对Docker核心组件image进行了剖析，这节我们将对image层之上的container进行拷问。从下图中，我们可以看出container是基于Image层产生的。而image与container的关系 ，我们可以类比类和对象的关系进行理解。在docker的世界中，image是只读的，而container是可读写的。
